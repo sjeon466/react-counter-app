@@ -6,6 +6,24 @@ class Counter extends Component {
     tags: []
   };
 
+  render() {
+    console.log("props", this.props);
+    return (
+      <div>
+        {this.props.children}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          //onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement()}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        {this.renderTags()}
+      </div>
+    );
+  }
+
   renderTags() {
     //if (this.state.tags.length === 0) return <p>there are no tags</p>;
     return (
@@ -40,23 +58,5 @@ class Counter extends Component {
     if (this.state.value === 0) return "ZERO";
     return this.state.value;
   }
-
-  render() {
-    //console.log("props", this.props);
-    return (
-      <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          //onClick={this.handleIncrement}
-          onClick={() => this.handleIncrement()}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        {this.renderTags()}
-      </div>
-    );
-  }
 }
-
 export default Counter;
